@@ -1,16 +1,16 @@
 import { useState } from 'react'
-import './App.css'
 import { CssBaseline, ThemeProvider } from '@mui/material'
-import { Home } from './pages'
+import { Home } from './pages/Home'
+import { Theme } from './Theme'
 
 function App() {
 
   return (
     <>
-      <CssBaseline />
-      <ThemeProvider theme={ }>
+      <Theme>
+        <CssBaseline />
         <Home />
-      </ThemeProvider>
+      </Theme>
     </>
 
   )
