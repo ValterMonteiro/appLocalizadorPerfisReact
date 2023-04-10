@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardHeader, CardMedia, CardContent, Typography, Link, CardActionArea } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Card, CardHeader, CardMedia, CardContent, Typography, Link, CardActionArea, CircularProgress } from "@mui/material";
 
 type UserProfileProps = {
   name: string;
@@ -8,10 +8,12 @@ type UserProfileProps = {
 };
 
 export function UserProfile({ name, avatarUrl, githubUrl }: UserProfileProps) {
+
   if (!UserProfile) {
     return null;
   }
   return (
+
     <Card>
       <CardActionArea>
         <CardContent>

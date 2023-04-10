@@ -1,32 +1,38 @@
-import React, { useState } from "react";
-import { TextField, Button } from "@mui/material";
+
+
+import { useState } from 'react';
+import { TextField } from '@mui/material';
+
 
 type SearchFormProps = {
-  onSearch: (query: string) => void;
-}
+  onSearch: (name: string) => void;
+  onChange?: (value: string) => void;
+};
 
-export function SearchForm({ onSearch }: SearchFormProps) {
-  const [query, setQuery] = useState("");
+export function SearchForm({ onSearch, onChange }: SearchFormProps) {
+  const [searchValue, setSearchValue] = useState('');
 
-  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = event.target.value;
+    setSearchValue(newValue);
+    if (onChange) {
+      onChange(newValue);
+    }
   };
 
-  const handleSearch = () => {
-    onSearch(query);
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    onSearch(searchValue);
   };
 
   return (
-    <>
+    <form onSubmit={handleSubmit}>
       <TextField
-        label="Search for a GitHub user"
-        variant="outlined"
-        value={query}
-        onChange={handleQueryChange}
+        label="Buscar usuário"
+        value={searchValue}
+        onChange={handleChange}
       />
-      <Button variant="contained" color="primary" onClick={handleSearch}>
-        Search
-      </Button>
-    </>
+    </form>
   );
-};
+}
+
