@@ -7,7 +7,12 @@ type ThemeProps = {
 const theme = createTheme({
   palette: {
     primary: {
-      main: red[500],
+      main: '#0971f1',
+      dark: '#053e85',
+    },
+    secondary: {
+      main: '#64748B',
+      contrastText: '#fff',
     },
   },
 });

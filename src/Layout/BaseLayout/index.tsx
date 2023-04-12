@@ -1,3 +1,4 @@
+import { Image } from '@mui/icons-material';
 import { AppBar, Toolbar, Typography, Box } from '@mui/material';
 
 type BaseLayoutProps = {

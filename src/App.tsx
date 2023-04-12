@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { CssBaseline, ThemeProvider } from '@mui/material'
+import { Container, CssBaseline, ThemeProvider } from '@mui/material'
 import { Home } from './pages/Home'
 import { Theme } from './Theme'
 
@@ -7,9 +7,12 @@ function App() {
 
   return (
     <>
+
       <Theme>
         <CssBaseline />
-        <Home />
+        <Container>
+          <Home />
+        </Container>
       </Theme>
     </>
 
