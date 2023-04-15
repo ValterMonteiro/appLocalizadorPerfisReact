@@ -2,7 +2,8 @@ import { BaseLayout } from '../../Layout/BaseLayout';
 import { useEffect, useState } from 'react';
 import { SearchForm } from '../../Components/SearchForm';
 import { UserProfile } from '../../Components/UserProfile';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, CssBaseline } from '@mui/material';
+import { Theme } from '../../Theme';
 
 export function Home() {
   const [user, setUser] = useState<{
@@ -45,6 +46,7 @@ export function Home() {
 
   return (
     <>
+
       <BaseLayout appBarTitle="Localizador de Perfis">
         <SearchForm onSearch={handleSearch} onChange={handleSearchChange} />
         {isLoading ? (
