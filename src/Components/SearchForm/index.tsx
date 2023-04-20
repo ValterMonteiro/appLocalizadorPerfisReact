@@ -1,38 +1,21 @@
-
-
-import { useState } from 'react';
 import { TextField } from '@mui/material';
 
-
 type SearchFormProps = {
-  onSearch: (name: string) => void;
-  onChange?: (value: string) => void;
+  onSearchChange: (value: string) => void;
 };
 
-export function SearchForm({ onSearch, onChange }: SearchFormProps) {
-  const [searchValue, setSearchValue] = useState('');
-
+export function SearchForm({ onSearchChange }: SearchFormProps) {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value;
-    setSearchValue(newValue);
-    if (onChange) {
-      onChange(newValue);
-    }
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    onSearch(searchValue);
+    onSearchChange(newValue);
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <TextField
         label="Buscar usuário"
-        value={searchValue}
         onChange={handleChange}
       />
     </form>
   );
 }
-

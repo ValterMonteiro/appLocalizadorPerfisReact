@@ -1,9 +1,8 @@
 import { BaseLayout } from '../../Layout/BaseLayout';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { SearchForm } from '../../Components/SearchForm';
 import { UserProfile } from '../../Components/UserProfile';
-import { CircularProgress, CssBaseline } from '@mui/material';
-import { Theme } from '../../Theme';
+import { Button, CircularProgress } from '@mui/material';
 
 export function Home() {
   const [user, setUser] = useState<{
@@ -14,6 +13,7 @@ export function Home() {
 
   const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [isButtonClicked, setIsButtonClicked] = useState(false);
 
   const handleSearch = async (name: string) => {
     setIsLoading(true);
@@ -36,31 +36,42 @@ export function Home() {
     setSearchValue(value);
   };
 
-  useEffect(() => {
+  const handleButtonClick = () => {
+    setIsButtonClicked(true);
     if (searchValue.trim() !== '') {
       handleSearch(searchValue);
     } else {
       setUser(null);
     }
-  }, [searchValue]);
+  };
 
   return (
     <>
-
       <BaseLayout appBarTitle="Localizador de Perfis">
-        <SearchForm onSearch={handleSearch} onChange={handleSearchChange} />
+        <SearchForm onSearchChange={handleSearchChange} />
+        <Button variant="contained" onClick={handleButtonClick}
+          sx={{
+            width: '20%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'space-around',
+            marginTop: 2,
+          }}
+        >Buscar</Button>
         {isLoading ? (
           <CircularProgress />
         ) : (
           <>
-            {user ? (
+            {user && isButtonClicked ? (
               <UserProfile
                 name={user.name}
                 avatarUrl={user.avatarUrl}
                 githubUrl={user.htmlUrl}
               />
             ) : (
-              <div>Usuário não encontrado</div>
+              isButtonClicked && <div>Usuário não encontrado</div>
             )}
           </>
         )}
