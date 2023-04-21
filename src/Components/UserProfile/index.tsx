@@ -5,9 +5,13 @@ type UserProfileProps = {
   name: string;
   avatarUrl: string;
   githubUrl: string;
+  followers: number;
+  following: number;
+  repos: number;
+  bio: string;
 };
 
-export function UserProfile({ name, avatarUrl, githubUrl }: UserProfileProps) {
+export function UserProfile({ name, avatarUrl, githubUrl, followers, following, repos, bio }: UserProfileProps) {
 
   if (!UserProfile) {
     return null;
@@ -55,6 +59,22 @@ export function UserProfile({ name, avatarUrl, githubUrl }: UserProfileProps) {
                 <ArrowCircleRight />
               </Icon>
             </Link>
+          </Typography>
+          <Typography variant="body2">
+            Followers
+            <CardHeader title={followers} />
+          </Typography>
+          <Typography variant="body2">
+            Following
+            <CardHeader title={following} />
+          </Typography>
+          <Typography variant="body2">
+            Repos
+            <CardHeader title={repos} />
+          </Typography>
+          <Typography variant="body2">
+            Bio
+            <CardHeader title={bio} />
           </Typography>
         </CardContent>
       </CardActionArea>

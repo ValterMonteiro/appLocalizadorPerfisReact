@@ -9,6 +9,10 @@ export function Home() {
     avatarUrl: string;
     name: string;
     htmlUrl: string;
+    followers: number;
+    following: number;
+    repos: number;
+    bio: string;
   } | null>(null);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -26,6 +30,10 @@ export function Home() {
         avatarUrl: data.avatar_url,
         name: data.name,
         htmlUrl: data.html_url,
+        followers: data.followers,
+        following: data.following,
+        repos: data.public_repos,
+        bio: data.bio,
       });
     } else {
       setUser(null);
@@ -69,6 +77,10 @@ export function Home() {
                 name={user.name}
                 avatarUrl={user.avatarUrl}
                 githubUrl={user.htmlUrl}
+                followers={user.followers}
+                following={user.following}
+                repos={user.repos}
+                bio={user.bio}
               />
             ) : (
               isButtonClicked && <div>Usuário não encontrado</div>
