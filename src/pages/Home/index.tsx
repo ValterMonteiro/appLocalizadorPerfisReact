@@ -3,17 +3,10 @@ import { useState } from 'react';
 import { SearchForm } from '../../Components/SearchForm';
 import { UserProfile } from '../../Components/UserProfile';
 import { Button, CircularProgress } from '@mui/material';
+import { UserProfileProps } from '../../Types/userProfile';
 
 export function Home() {
-  const [user, setUser] = useState<{
-    avatarUrl: string;
-    name: string;
-    htmlUrl: string;
-    followers: number;
-    following: number;
-    repos: number;
-    bio: string;
-  } | null>(null);
+  const [user, setUser] = useState<UserProfileProps | null>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -29,7 +22,7 @@ export function Home() {
       setUser({
         avatarUrl: data.avatar_url,
         name: data.name,
-        htmlUrl: data.html_url,
+        githubUrl: data.html_url,
         followers: data.followers,
         following: data.following,
         repos: data.public_repos,
@@ -73,15 +66,7 @@ export function Home() {
         ) : (
           <>
             {user && isButtonClicked ? (
-              <UserProfile
-                name={user.name}
-                avatarUrl={user.avatarUrl}
-                githubUrl={user.htmlUrl}
-                followers={user.followers}
-                following={user.following}
-                repos={user.repos}
-                bio={user.bio}
-              />
+              <UserProfile {...user} />
             ) : (
               isButtonClicked && <div>Usuário não encontrado</div>
             )}

@@ -48,34 +48,75 @@ export function UserProfile({ name, avatarUrl, githubUrl, followers, following, 
             justifyContent: 'space-around',
           }}
         >
-          <Avatar sx={{ width: 150, height: 150 }}>
-            <CardMedia image={avatarUrl} style={{ height: 140, width: 150, paddingTop: "56.25%" }} />
-          </Avatar>
-          <CardHeader title={name} />
-          <Typography variant="body2">
-            <Link href={githubUrl}>
+          <CardContent>
+            <Avatar sx={{ width: 150, height: 150 }}>
+              <CardMedia image={avatarUrl} style={{ height: 140, width: 150, paddingTop: "56.25%" }} />
+            </Avatar>
+          </CardContent>
+          <CardContent>
+            <Typography variant="body2">
+              Nome
+            </Typography>
+            <CardHeader title={name} />
+          </CardContent>
+          <CardContent>
+            <Typography variant="body2">
               Perfil no Github
+            </Typography>
+            <Link href={githubUrl}>
               <Icon>
                 <ArrowCircleRight />
               </Icon>
             </Link>
-          </Typography>
-          <Typography variant="body2">
-            Followers
-            <CardHeader title={followers} />
-          </Typography>
-          <Typography variant="body2">
-            Following
-            <CardHeader title={following} />
-          </Typography>
-          <Typography variant="body2">
-            Repos
-            <CardHeader title={repos} />
-          </Typography>
-          <Typography variant="body2">
-            Bio
+          </CardContent>
+          <CardContent
+            sx={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+              backgroundColor: '#053e85',
+            }}>
+            <CardContent
+              sx={{
+                border: '1px solid #0e0e0f'
+              }}>
+              <Typography variant="body2">
+                Followers
+              </Typography>
+              <CardHeader title={followers} />
+            </CardContent>
+            <CardContent
+              sx={{
+                border: '1px solid #0e0e0f'
+              }}>
+              <Typography variant="body2">
+                Following
+              </Typography>
+              <CardHeader title={following} />
+            </CardContent>
+            <CardContent
+              sx={{
+                border: '1px solid #0e0e0f'
+              }}>
+              <Typography variant="body2">
+                Repos
+              </Typography>
+              <CardHeader title={repos} />
+            </CardContent>
+          </CardContent>
+          <CardContent
+            sx={{
+              border: '1px solid #0e0e0f',
+              backgroundColor: '#053e85'
+            }}>
+            <Typography variant="body2">
+              Bio
+            </Typography>
             <CardHeader title={bio} />
-          </Typography>
+          </CardContent>
         </CardContent>
       </CardActionArea>
     </Card>
