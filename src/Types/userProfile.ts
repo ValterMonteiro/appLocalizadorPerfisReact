@@ -1,4 +1,4 @@
-export type UserProfileProps = {
+export type UserApi = {
   name: string;
   avatarUrl: string;
   githubUrl: string;
@@ -7,3 +7,7 @@ export type UserProfileProps = {
   repos: number;
   bio: string;
 };
+
+export type UserProfileProps = {
+  user: UserApi;
+}

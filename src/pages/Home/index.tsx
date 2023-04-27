@@ -2,11 +2,11 @@ import { BaseLayout } from '../../Layout/BaseLayout';
 import { useState } from 'react';
 import { SearchForm } from '../../Components/SearchForm';
 import { UserProfile } from '../../Components/UserProfile';
-import { Button, CircularProgress } from '@mui/material';
-import { UserProfileProps } from '../../Types/userProfile';
+import { Button, CircularProgress, Typography } from '@mui/material';
+import { UserApi, UserProfileProps } from '../../Types/userProfile';
 
 export function Home() {
-  const [user, setUser] = useState<UserProfileProps | null>(null);
+  const [user, setUser] = useState<UserApi | null>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -66,13 +66,14 @@ export function Home() {
         ) : (
           <>
             {user && isButtonClicked ? (
-              <UserProfile {...user} />
+              <UserProfile user={user} />
             ) : (
-              isButtonClicked && <div>Usuário não encontrado</div>
+              isButtonClicked &&
+              <Typography variant='h6'>Usuário não encontrado</Typography>
             )}
           </>
         )}
-      </BaseLayout>
+      </BaseLayout >
     </>
   );
 }
