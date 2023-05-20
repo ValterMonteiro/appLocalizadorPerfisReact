@@ -48,7 +48,7 @@ export function Home() {
 
   return (
     <>
-      <BaseLayout appBarTitle="Localizador de Perfis">
+      <BaseLayout appBarTitle="Localizador de Perfis Git">
         <SearchForm onSearchChange={handleSearchChange} />
         <Button variant="contained" onClick={handleButtonClick}
           sx={{
